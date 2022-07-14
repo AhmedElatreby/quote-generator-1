@@ -1,10 +1,10 @@
+import { updateCacheIfStale } from "./updateCacheIfStale.js"
+import renderFreshQuote from "./renderFreshQuote.js"
+import tweetQuote from "./tweetQuote.js"
 import { twitterBtn, newQuoteBtn } from "./domElements.js"
 
-import getAndDisplayQuote from "./getAndDisplayQuote.js"
-import tweetQuote from "./tweetQuote.js"
+await updateCacheIfStale()
+await renderFreshQuote()
 
-newQuoteBtn.addEventListener("click", getAndDisplayQuote)
+newQuoteBtn.addEventListener("click", renderFreshQuote)
 twitterBtn.addEventListener("click", tweetQuote)
-
-// on load...
-getAndDisplayQuote()
