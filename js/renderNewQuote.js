@@ -1,5 +1,5 @@
 import { whenLoading, whenLoaded } from "./loaderControl.js"
-import { loader, quoteContainer, quoteText, authorText } from "./DOMRefs.js"
+import { loader, quoteContainer, quoteText, authorText, progressBar } from "./DOMElements.js"
 import {
   updateCacheIfStale,
   getCachedQuotes,
@@ -21,11 +21,20 @@ async function renderQuote(quote) {
   quoteText.textContent = quote.text
 }
 
+function renderProgressBar() { 
+  const progressBarInDom = document.getElementById("progress-bar")
+  if(progressBarInDom) {
+    progressBarInDom.parentElement.removeChild(progressBarInDom)
+  }
+  quoteContainer.appendChild(progressBar)
+}
+
 export default async function renderNewQuote() {
   whenLoading({ showElement: loader, hideElement: quoteContainer })
   await updateCacheIfStale()
   const quotes = getCachedQuotes().payload
   const quote = selectRandomQuote(quotes)
   await renderQuote(quote)
+  renderProgressBar()
   whenLoaded({ showElement: quoteContainer, hideElement: loader })
 }

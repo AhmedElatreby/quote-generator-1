@@ -78,6 +78,26 @@ button:active {
   font-size: 1.5rem;
 }
 
+.progress-bar {
+  background: #f00;
+  margin-top: 16px;
+  height: 8px;
+  border-radius: 1000px;
+}
+
+.show-progress {
+  animation: shrink 30s linear;
+}
+
+@keyframes shrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
 .loader {
   border: 16px solid rgba(243, 243, 243, 0.5);
   border-radius: 50%;
