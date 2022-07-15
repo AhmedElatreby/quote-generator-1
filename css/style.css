@@ -80,7 +80,7 @@ button:active {
 
 .progress-bar {
   background: #f00;
-  margin-top: 16px;
+  margin-top: 20px;
   height: 8px;
   border-radius: 1000px;
 }
